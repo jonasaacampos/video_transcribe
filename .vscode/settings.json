@@ -1,0 +1,41 @@
+{
+    "workbench.colorCustomizations": {
+        "activityBar.background": "#000000",
+        "titleBar.activeBackground": "#000000",
+        "titleBar.activeForeground": "#00ff00", // Menu Text
+        //Side Bar
+        "sideBar.background": "#000000",
+        "icon.foreground": "#ffffff",
+        "sideBarTitle.foreground": "#00ff00",
+        "sideBarSectionHeader.foreground": "#ffffff", //title groups side bar
+        "sideBar.border": "#00ff00",
+        "sideBarSectionHeader.background": "#0000",
+        "sideBarSectionHeader.border": "#ffffff",
+        //Main window borders
+        "contrastActiveBorder": "#ffffff",
+        "contrastBorder": "#000000",
+        // side bar text
+        "sideBar.foreground": "#00ff00",
+        //"focusBorder": "#ff0000"
+        "foreground": "#ffffff", // cor texto topo janela (caminho para função atual)
+        "editor.background": "#000000",
+        "editor.foreground": "#ffffffd2",
+        "editorLineNumber.foreground": "#ffffff",
+        "editorLineNumber.activeForeground": "#00ff00",
+        "editorCursor.foreground": "#00ff00",
+        "editor.selectionBackground": "#f5e50454",
+        "editor.selectionHighlightBackground": "#ffffff17",
+        "editor.selectionHighlightBorder": "#ffffff",
+        "editorWidget.background": "#000000", //dicas de tela
+        "editorWidget.border": "#00ff00",
+        "terminal.background": "#000000",
+        "terminal.foreground": "#00ff00",
+        "terminalCursor.background": "#000000",
+        "terminalCursor.foreground": "#ffffff",
+    },
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.black-formatter"
+    },
+    "python.formatting.provider": "none",
+    //"workbench.colorTheme": "Monokai Dimmed"
+}
