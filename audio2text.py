@@ -1,38 +1,21 @@
-import io
+import speech_recognition as sr
+from os import path
 import os
-from tqdm import tqdm
-from google.cloud import speech_v1p1beta1 as speech
+from pydub import AudioSegment
 
-def transcrever_audio(nome_arquivo, pbar):
-    client = speech.SpeechClient()
+# convert mp3 file to wav     
+audio_path = os.getcwd() + os.sep +'data' + os.sep + 'audio'  + os.sep
 
-    # Carrega o arquivo de áudio
-    with io.open(nome_arquivo, "rb") as audio_file:
-        conteudo = audio_file.read()
+sound = AudioSegment.from_mp3(audio_path + 'audio.mp3' )
+sound.export(audio_path + "transcript.wav", format="wav")
 
-    audio = speech.RecognitionAudio(content=conteudo)
 
-    config = speech.RecognitionConfig(
-        encoding=speech.RecognitionConfig.AudioEncoding.ENCODING_UNSPECIFIED,
-        language_code="pt-BR",
-    )
+# transcribe audio file                                                         
+AUDIO_FILE = audio_path + "transcript.wav"
 
-    # Envia a requisição de transcrição de fala
-    response = client.recognize(config=config, audio=audio)
+# use the audio file as the audio source                                        
+r = sr.Recognizer()
+with sr.AudioFile(AUDIO_FILE) as source:
+        audio = r.record(source)  # read the entire audio file                  
 
-    # Processa a resposta para extrair o texto reconhecido
-    texto_transcrito = ""
-    for result in response.results:
-        texto_transcrito += result.alternatives[0].transcript + " "
-
-    return texto_transcrito.strip()
-
-# Substitua 'audio.mp3' pelo caminho onde você quer salvar o arquivo de áudio
-audio_path = os.getcwd() + os.sep +'data' + os.sep + 'audio'  + os.sep + 'teste.wav'
-
-# Cria barra de progresso
-with tqdm(total=100, desc='Transcrevendo áudio') as pbar:
-    texto_transcrito = transcrever_audio(audio_path, pbar)
-
-print("\nTexto transcrito:")
-print(texto_transcrito)
+        print("Transcription: " + r.recognize_google(audio))
